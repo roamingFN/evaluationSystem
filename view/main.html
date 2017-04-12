@@ -1,0 +1,49 @@
+<div ng-controller="mainCtrl">
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="">Evaluation System</a>
+		</div>
+
+		<button class="btn btn-info navbar-btn" ng-click="toReport()">My Report</button>
+		<p class="navbar-text navbar-right">Signed in as
+			<b>ID: {{user_id}}</b>
+			<a href="" ng-click="toEdit()">{{username}}</a>
+			<a href="" ng-click="logout()">logout</a>
+		</p>
+	</nav>
+
+	<br>
+	
+	<p>วันที่ประเมิน {{currentDateTime}}</p>
+	
+	<!-- <div style="text-align: center">
+		<button class="btn btn-info" ng-click="toReport()">My Report</button>
+	</div> -->
+
+	<br>
+	
+	<table class="table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Score</th>
+				<th>Comment</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in users">
+				<td>{{user.user_id}}</td>
+				<td>{{user.username}}</td>
+				<td><input class="form-control" ng-model="user.score" ng-keydown="validateInput($event)" maxlength="1"></td>
+				<!-- <td><star-rating value="{{user.score}}"></star-rating></td> -->
+				<td><input class="form-control" ng-model="user.comment"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<br>
+	<div style="text-align: center">
+		<button ng-click="submit()" class="btn btn-primary">Submit</button>
+	</div>
+</div>
