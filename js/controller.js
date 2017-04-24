@@ -117,22 +117,43 @@ app.controller('mainCtrl', function ($scope, $http, $routeParams, $location, dat
 		location.href = '';
 	}
 	console.log(dataService.getData());
+
+	$('#test').rating();
 });
 
-// app.directive('starRating', function() {
-// 	return {
-// 		// Restrict it to be an attribute in this case
-// 		restrict: 'E',
-// 		// responsible for registering DOM listeners as well as updating the DOM
-// 		link: function(scope, element, attrs) {
-// 		    $(element).rating({
-// 		    	step: 1,
-// 		    	size: 'xs',
-// 		    	starCaptions: {1: 'Very Poor', 2: 'Poor', 3: 'Ok', 4: 'Good', 5: 'Excellent'}
-// 		    }).val(attrs.value);
-// 		}
-// 	};
-// });
+app.directive('starRating', function() {
+	// var starTemplate = '<div class="rating-container rating-xs rating-animate">'
+	// + '<div class="clear-rating clear-rating-active" title="Clear"><i class="glyphicon glyphicon-minus-sign"></i></div>'
+	// + '<div class="rating-stars"><span class="empty-stars"><span class="star">'
+	// + '<i class="glyphicon glyphicon-star-empty"></i></span><span class="star">'
+	// + '<i class="glyphicon glyphicon-star-empty"></i></span><span class="star">'
+	// + '<i class="glyphicon glyphicon-star-empty"></i></span><span class="star">'
+	// + '<i class="glyphicon glyphicon-star-empty"></i></span><span class="star">'
+	// + '<i class="glyphicon glyphicon-star-empty"></i></span></span>'
+	// + '<span class="filled-stars" style="width: 20%;"><span class="star">' 
+	// + '<i class="glyphicon glyphicon-star"></i></span><span class="star">'
+	// + '<i class="glyphicon glyphicon-star"></i></span><span class="star">' 
+	// + '<i class="glyphicon glyphicon-star"></i></span><span class="star">' 
+	// + '<i class="glyphicon glyphicon-star"></i></span><span class="star">'
+	// + '<i class="glyphicon glyphicon-star"></i></span></span>'
+	// + '<div>'
+	// + '<div class="caption"><span class="label label-danger">Very Poor</span></div></div>';
+
+	return {
+		// Restrict it to be an attribute in this case
+		restrict: 'E',
+		//template: starTemplate,
+		// responsible for registering DOM listeners as well as updating the DOM
+		link: function(scope, element, attrs) {
+			element.val(attrs.value);
+		    $(element).rating({
+		    	step: 1,
+		    	size: 'xs',
+		    	starCaptions: {1: 'Very Poor', 2: 'Poor', 3: 'Ok', 4: 'Good', 5: 'Excellent'}
+		    });	    
+		}
+	};
+});
 
 // edit Controller
 app.controller('editCtrl', function ($scope, $http, dataService, $location) {

@@ -9,7 +9,8 @@ app.config(function($routeProvider) {
         templateUrl : 'view/login.html'
     })
     .when('/main/:user_id', {
-        templateUrl : 'view/main.html'
+        templateUrl : 'view/main.html',
+        controller : 'mainCtrl'
     })
     .when('/main/:user_id/edit', {
         templateUrl : 'view/edit.html'
